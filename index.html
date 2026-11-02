@@ -1,14 +1,1167 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>  
+<html lang="en" class="scroll-smooth">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Rounak Gupta — rounakgupta.com</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter (SF Pro style alternative) & JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        apple: {
+                            bg: '#f5f5f7',
+                            darkbg: '#000000',
+                            card: '#ffffff',
+                            darkcard: '#1c1c1e',
+                            text: '#1d1d1f',
+                            subtext: '#86868b',
+                            blue: '#0071e3',
+                            purple: '#af52de',
+                            pink: '#ff2d55',
+                            orange: '#ff9500',
+                            green: '#34c759',
+                            teal: '#5ac8fa',
+                            yellow: '#ffcc00'
+                        }
+                    },
+                    boxShadow: {
+                        'bento': '0 4px 24px rgba(0, 0, 0, 0.04)',
+                        'bento-hover': '0 12px 36px rgba(0, 0, 0, 0.09)',
+                        'apple-pill': '0 8px 20px -4px rgba(0, 113, 227, 0.4)'
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Apple-inspired utilities */
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            letter-spacing: -0.015em;
+        }
+
+        .apple-heading {
+            letter-spacing: -0.035em;
+        }
+
+        /* Vibrant Apple Intelligence / iMac Mesh Gradient Text */
+        .apple-gradient-text {
+            background: linear-gradient(95deg, #0071e3 0%, #af52de 35%, #ff2d55 70%, #ff9500 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% auto;
+            animation: gradientFlow 6s ease infinite;
+        }
+
+        @keyframes gradientFlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Subtle Ambient Mesh Background */
+        .hero-mesh {
+            background-image: 
+                radial-gradient(at 15% 20%, rgba(0, 113, 227, 0.12) 0px, transparent 50%),
+                radial-gradient(at 85% 15%, rgba(175, 82, 222, 0.12) 0px, transparent 50%),
+                radial-gradient(at 50% 80%, rgba(255, 45, 85, 0.10) 0px, transparent 50%),
+                radial-gradient(at 80% 80%, rgba(255, 149, 0, 0.10) 0px, transparent 50%);
+        }
+
+        .dark .hero-mesh {
+            background-image: 
+                radial-gradient(at 15% 20%, rgba(0, 113, 227, 0.22) 0px, transparent 50%),
+                radial-gradient(at 85% 15%, rgba(175, 82, 222, 0.22) 0px, transparent 50%),
+                radial-gradient(at 50% 80%, rgba(255, 45, 85, 0.18) 0px, transparent 50%);
+        }
+
+        /* Bento Card Transitions */
+        .bento-card {
+            transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .bento-card:hover {
+            transform: translateY(-4px) scale(1.005);
+        }
+
+        /* Guitar String Pluck Animation */
+        @keyframes vibrateString {
+            0% { transform: translateY(0); }
+            20% { transform: translateY(-4px); }
+            40% { transform: translateY(4px); }
+            60% { transform: translateY(-2px); }
+            80% { transform: translateY(2px); }
+            100% { transform: translateY(0); }
+        }
+        .string-pluck {
+            animation: vibrateString 0.35s ease-out;
+        }
+
+        /* Camera Color Grades */
+        .grade-natural { filter: contrast(1.05) saturate(1.1); }
+        .grade-warm { filter: sepia(0.28) contrast(1.08) saturate(1.35) brightness(1.03); }
+        .grade-cyber { filter: hue-rotate(190deg) contrast(1.15) saturate(1.4); }
+        .grade-bw { filter: grayscale(1) contrast(1.25); }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(134, 134, 139, 0.3);
+            border-radius: 9999px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(134, 134, 139, 0.5);
+        }
+    </style>
 </head>
-<body>
-    <script src="script.js"></script>
-    Hi
-    Its Ron!
+<body class="bg-apple-bg dark:bg-apple-darkbg text-apple-text dark:text-white transition-colors duration-300 selection:bg-apple-blue selection:text-white overflow-x-hidden">
+
+    <!-- STICKY APPLE FROSTED GLASS NAVBAR -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-white/75 dark:bg-[#1c1c1e]/75 backdrop-blur-xl border-b border-black/[0.06] dark:border-white/[0.08] transition-colors duration-300">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between">
+            <!-- Brand Left -->
+            <a href="#" class="flex items-center gap-2 group">
+                <div class="w-7 h-7 rounded-lg bg-gradient-to-tr from-apple-blue via-apple-purple to-apple-pink flex items-center justify-center text-white font-bold text-sm shadow-sm group-hover:rotate-6 transition-transform">
+                    R
+                </div>
+                <span class="font-semibold tracking-tight text-sm sm:text-base">rounakgupta.com</span>
+                <span class="hidden sm:inline-block text-[10px] font-mono uppercase px-2 py-0.5 rounded-full bg-black/5 dark:bg-white/10 text-apple-subtext dark:text-gray-300">
+                    v17.0
+                </span>
+            </a>
+
+            <!-- Center Links -->
+            <nav class="hidden md:flex items-center gap-7 text-xs font-medium text-apple-subtext dark:text-gray-300">
+                <a href="#bento" class="hover:text-apple-text dark:hover:text-white transition-colors">Overview</a>
+                <a href="#music-card" class="hover:text-apple-text dark:hover:text-white transition-colors">Music</a>
+                <a href="#camera-card" class="hover:text-apple-text dark:hover:text-white transition-colors">Films & Photo</a>
+                <a href="#youtube-card" class="hover:text-apple-text dark:hover:text-white transition-colors">YouTube</a>
+                <a href="#commerce-card" class="hover:text-apple-text dark:hover:text-white transition-colors">Commerce & Teaching</a>
+                <button onclick="toggleSpecsModal()" class="hover:text-apple-blue dark:hover:text-apple-teal transition-colors flex items-center gap-1">
+                    <span>Tech Specs</span>
+                    <i class="ph-bold ph-Sparkle text-apple-purple"></i>
+                </button>
+            </nav>
+
+            <!-- Right Actions -->
+            <div class="flex items-center gap-2.5">
+                <!-- Honest Mode Pill Switcher -->
+                <button id="honestModeBtn" onclick="toggleHonestMode()" title="Switch between Apple Marketing Mode and Honest 17yo Mode" class="hidden sm:flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 rounded-full bg-amber-500/10 text-amber-700 dark:text-amber-300 border border-amber-500/20 hover:bg-amber-500/20 transition-all">
+                    <i class="ph-fill ph-smiley-wink text-amber-500 text-sm"></i>
+                    <span id="honestModeLabel">Mode: Apple Polish</span>
+                </button>
+
+                <!-- Theme Toggle -->
+                <button onclick="toggleTheme()" aria-label="Toggle Dark Mode" class="w-8 h-8 rounded-full flex items-center justify-center bg-black/5 dark:bg-white/10 hover:bg-black/10 dark:hover:bg-white/20 transition-colors">
+                    <i id="themeIcon" class="ph-fill ph-moon text-sm"></i>
+                </button>
+
+                <!-- Say Hi Button -->
+                <button onclick="openContactModal()" class="text-xs font-semibold px-4 py-1.5 rounded-full bg-gradient-to-r from-apple-blue to-apple-purple text-white shadow-apple-pill hover:opacity-95 active:scale-95 transition-all">
+                    Say Hi
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main class="pt-20 pb-20">
+
+        <!-- HERO SECTION -->
+        <section class="relative hero-mesh pt-10 pb-14 md:pt-16 md:pb-20 px-4 sm:px-6 overflow-hidden">
+            <div class="max-w-4xl mx-auto text-center">
+                
+                <!-- Playful Interactive Self-Aware Badge -->
+                <div class="inline-flex flex-wrap items-center justify-center gap-2 p-1.5 pr-4 rounded-full bg-white/80 dark:bg-[#1c1c1e]/90 backdrop-blur-md border border-black/[0.06] dark:border-white/10 shadow-sm mb-7">
+                    <span class="px-2.5 py-0.5 text-[11px] font-bold uppercase tracking-wider rounded-full bg-gradient-to-r from-apple-pink to-apple-orange text-white">
+                        Asansol Edition
+                    </span>
+                    <span id="badgeText" class="text-xs sm:text-sm font-medium text-apple-text dark:text-gray-200">
+                        Certified Overthinker &amp; Joyfully Stupid Genius
+                    </span>
+                    <button onclick="toggleHonestMode()" class="text-xs text-apple-blue font-semibold hover:underline ml-1 flex items-center gap-0.5">
+                        <span>Flip reality</span>
+                        <i class="ph-bold ph-arrows-clockwise"></i>
+                    </button>
+                </div>
+
+                <!-- Giant Apple Headline -->
+                <h1 class="apple-heading text-5xl sm:text-7xl md:text-8xl font-extrabold tracking-tight leading-[1.03] mb-6">
+                    <span id="heroTitleMain">Rounak.</span>
+                    <span class="apple-gradient-text block sm:inline" id="heroTitleGradient">Pro. Max.</span>
+                </h1>
+
+                <!-- Subtitle -->
+                <p id="heroSubtitle" class="max-w-2xl mx-auto text-lg sm:text-xl md:text-2xl font-normal text-apple-subtext dark:text-gray-400 leading-relaxed mb-8">
+                    A 17-year-old musician, filmmaker, YouTuber, Class 11 Commerce student, and part-time teacher from <span class="text-apple-text dark:text-white font-medium">Asansol, West Bengal</span>. Trying a bit of everything—and having a blast doing it.
+                </p>
+
+                <!-- Hero CTA Pills -->
+                <div class="flex flex-wrap items-center justify-center gap-3 sm:gap-4">
+                    <a href="#bento" class="px-6 py-3 rounded-full bg-apple-blue hover:bg-blue-600 text-white font-medium text-sm sm:text-base shadow-apple-pill transition-all flex items-center gap-2">
+                        <span>Explore My World</span>
+                        <i class="ph-bold ph-arrow-down"></i>
+                    </a>
+                    <button onclick="toggleSpecsModal()" class="px-6 py-3 rounded-full bg-white dark:bg-[#1c1c1e] hover:bg-gray-100 dark:hover:bg-white/10 text-apple-text dark:text-white font-medium text-sm sm:text-base border border-black/10 dark:border-white/15 transition-all flex items-center gap-2">
+                        <i class="ph-bold ph-cpu text-apple-purple"></i>
+                        <span>View RounakOS 17 Specs</span>
+                    </button>
+                </div>
+
+                <!-- Quick Location & Status Strip -->
+                <div class="mt-10 flex flex-wrap items-center justify-center gap-4 sm:gap-8 text-xs font-medium text-apple-subtext dark:text-gray-400">
+                    <div class="flex items-center gap-1.5">
+                        <span class="w-2 h-2 rounded-full bg-apple-green animate-pulse"></span>
+                        <span>Based in Asansol, WB, India</span>
+                    </div>
+                    <div class="flex items-center gap-1.5">
+                        <i class="ph-fill ph-student text-apple-blue text-sm"></i>
+                        <span>Class 11 CBSE Commerce</span>
+                    </div>
+                    <div class="flex items-center gap-1.5">
+                        <i class="ph-fill ph-music-notes text-apple-pink text-sm"></i>
+                        <span>Guitarist &amp; Creator</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- BENTO GRID SECTION -->
+        <section id="bento" class="max-w-6xl mx-auto px-4 sm:px-6 pt-4">
+            
+            <!-- Section Header -->
+            <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-2">
+                <div>
+                    <p class="text-xs font-bold uppercase tracking-widest text-apple-blue mb-1">The Complete Lineup</p>
+                    <h2 class="apple-heading text-3xl sm:text-4xl font-bold">Everything I love doing.</h2>
+                </div>
+                <p class="text-sm text-apple-subtext">Interactive cards — go ahead and click around.</p>
+            </div>
+
+            <!-- 12-Column Apple Bento Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-5">
+
+                <!-- CARD 1: INTERACTIVE GUITAR & MUSIC STUDIO (7 Cols) -->
+                <div id="music-card" class="bento-card md:col-span-7 rounded-3xl bg-white dark:bg-apple-darkcard p-6 sm:p-8 border border-black/[0.05] dark:border-white/[0.08] shadow-bento flex flex-col justify-between relative overflow-hidden">
+                    <!-- Decorative Top Glow -->
+                    <div class="absolute -top-24 -right-24 w-56 h-56 rounded-full bg-gradient-to-br from-apple-orange/20 to-apple-pink/20 blur-2xl pointer-events-none"></div>
+
+                    <div>
+                        <div class="flex items-center justify-between gap-2 mb-3">
+                            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-orange-500/10 text-orange-600 dark:text-orange-400">
+                                <i class="ph-fill ph-guitar"></i>
+                                Guitar &amp; Musical Instruments
+                            </span>
+                            <span id="audioStatusBadge" class="text-[11px] font-mono text-apple-subtext flex items-center gap-1">
+                                <i class="ph-fill ph-speaker-high text-apple-orange"></i> Web Audio Synth Ready
+                            </span>
+                        </div>
+
+                        <h3 class="apple-heading text-2xl sm:text-3xl font-bold mb-2">
+                            Six strings. Endless therapy.
+                        </h3>
+                        <p id="musicCardDesc" class="text-sm sm:text-base text-apple-subtext dark:text-gray-400 mb-6">
+                            Whenever I’m not studying or editing videos, I have a guitar in my hands. Pick a chord below or pluck the strings directly to jam with my virtual acoustic guitar.
+                        </p>
+                    </div>
+
+                    <!-- Interactive Acoustic Guitar Fretboard Box -->
+                    <div class="rounded-2xl bg-[#fbfbfd] dark:bg-black/50 border border-black/[0.06] dark:border-white/10 p-4 sm:p-5">
+                        <!-- Chord Buttons Row -->
+                        <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+                            <div class="flex flex-wrap items-center gap-1.5">
+                                <span class="text-xs font-semibold text-apple-subtext mr-1">Strum Chord:</span>
+                                <button onclick="strumChord('G')" id="chord-G" class="chord-btn px-3 py-1.5 rounded-xl text-xs font-bold bg-apple-orange text-white shadow-sm transition-all">G Major</button>
+                                <button onclick="strumChord('C')" id="chord-C" class="chord-btn px-3 py-1.5 rounded-xl text-xs font-bold bg-black/5 dark:bg-white/10 hover:bg-black/10 transition-all">C Add9</button>
+                                <button onclick="strumChord('Em')" id="chord-Em" class="chord-btn px-3 py-1.5 rounded-xl text-xs font-bold bg-black/5 dark:bg-white/10 hover:bg-black/10 transition-all">E Minor</button>
+                                <button onclick="strumChord('D')" id="chord-D" class="chord-btn px-3 py-1.5 rounded-xl text-xs font-bold bg-black/5 dark:bg-white/10 hover:bg-black/10 transition-all">D Major</button>
+                            </div>
+                            <span id="nowPlayingNote" class="text-xs font-mono font-semibold text-apple-orange">Ready to strum</span>
+                        </div>
+
+                        <!-- 6 Interactive Guitar Strings -->
+                        <div class="relative py-3 px-3 rounded-xl bg-gradient-to-r from-amber-950/90 via-stone-900 to-amber-950/90 text-white shadow-inner overflow-hidden select-none">
+                            <!-- Soundhole aesthetic circle -->
+                            <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-28 h-28 rounded-full bg-black/60 border-4 border-amber-600/30 pointer-events-none"></div>
+                            
+                            <!-- Fret Lines -->
+                            <div class="absolute inset-y-0 left-1/4 w-[2px] bg-stone-500/30 pointer-events-none"></div>
+                            <div class="absolute inset-y-0 left-2/4 w-[2px] bg-stone-500/30 pointer-events-none"></div>
+                            <div class="absolute inset-y-0 left-3/4 w-[2px] bg-stone-500/30 pointer-events-none"></div>
+
+                            <div class="space-y-3 relative z-10" id="stringsContainer">
+                                <!-- Generated dynamically or static 6 strings -->
+                                <div onclick="pluckSingleString(0)" class="group cursor-pointer py-1 flex items-center gap-3">
+                                    <span class="text-[10px] font-mono text-amber-300/80 w-6">E2</span>
+                                    <div id="string-0" class="w-full h-[3px] bg-gradient-to-r from-amber-400 via-amber-200 to-amber-400 rounded-full shadow group-hover:bg-white transition-colors"></div>
+                                </div>
+                                <div onclick="pluckSingleString(1)" class="group cursor-pointer py-1 flex items-center gap-3">
+                                    <span class="text-[10px] font-mono text-amber-300/80 w-6">A2</span>
+                                    <div id="string-1" class="w-full h-[2.5px] bg-gradient-to-r from-amber-400 via-amber-200 to-amber-400 rounded-full shadow group-hover:bg-white transition-colors"></div>
+                                </div>
+                                <div onclick="pluckSingleString(2)" class="group cursor-pointer py-1 flex items-center gap-3">
+                                    <span class="text-[10px] font-mono text-amber-300/80 w-6">D3</span>
+                                    <div id="string-2" class="w-full h-[2px] bg-gradient-to-r from-amber-300 via-amber-100 to-amber-300 rounded-full shadow group-hover:bg-white transition-colors"></div>
+                                </div>
+                                <div onclick="pluckSingleString(3)" class="group cursor-pointer py-1 flex items-center gap-3">
+                                    <span class="text-[10px] font-mono text-amber-300/80 w-6">G3</span>
+                                    <div id="string-3" class="w-full h-[1.75px] bg-gradient-to-r from-stone-300 via-white to-stone-300 rounded-full shadow group-hover:bg-amber-300 transition-colors"></div>
+                                </div>
+                                <div onclick="pluckSingleString(4)" class="group cursor-pointer py-1 flex items-center gap-3">
+                                    <span class="text-[10px] font-mono text-amber-300/80 w-6">B3</span>
+                                    <div id="string-4" class="w-full h-[1.5px] bg-gradient-to-r from-stone-300 via-white to-stone-300 rounded-full shadow group-hover:bg-amber-300 transition-colors"></div>
+                                </div>
+                                <div onclick="pluckSingleString(5)" class="group cursor-pointer py-1 flex items-center gap-3">
+                                    <span class="text-[10px] font-mono text-amber-300/80 w-6">E4</span>
+                                    <div id="string-5" class="w-full h-[1px] bg-gradient-to-r from-stone-200 via-white to-stone-200 rounded-full shadow group-hover:bg-amber-300 transition-colors"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-[11px] text-apple-subtext mt-2.5 flex items-center justify-between">
+                            <span>Click any string to pluck or hit a chord button above.</span>
+                            <span class="font-medium text-apple-text dark:text-gray-300">Acoustic + Ukulele + Keys</span>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- CARD 2: YOUTUBE CONTENT CREATOR (5 Cols) -->
+                <div id="youtube-card" class="bento-card md:col-span-5 rounded-3xl bg-white dark:bg-apple-darkcard p-6 sm:p-8 border border-black/[0.05] dark:border-white/[0.08] shadow-bento flex flex-col justify-between relative overflow-hidden">
+                    <div class="absolute -bottom-20 -right-20 w-48 h-48 rounded-full bg-apple-pink/15 blur-2xl pointer-events-none"></div>
+
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-red-500/10 text-red-600 dark:text-red-400">
+                                <i class="ph-fill ph-youtube-logo"></i>
+                                YouTube Creator
+                            </span>
+                            <span class="inline-flex items-center gap-1 text-xs font-mono text-red-500 font-semibold">
+                                <span class="w-2 h-2 rounded-full bg-red-500 animate-ping"></span> REC
+                            </span>
+                        </div>
+
+                        <h3 class="apple-heading text-2xl sm:text-3xl font-bold mb-2">
+                            Making videos from my bedroom.
+                        </h3>
+                        <p id="ytCardDesc" class="text-sm sm:text-base text-apple-subtext dark:text-gray-400 mb-5">
+                            Talking to a camera in my room like 10,000 people are listening. Music covers, student life vlogs, and cinematic experiments.
+                        </p>
+                    </div>
+
+                    <!-- Interactive Video Preview Thumbnail Card -->
+                    <div>
+                        <div onclick="openVideoModal()" class="group cursor-pointer relative rounded-2xl overflow-hidden bg-stone-900 aspect-video mb-4 shadow-md border border-black/10">
+                            <!-- Stylized SVG Scene for Video Preview -->
+                            <div class="absolute inset-0 bg-gradient-to-br from-indigo-950 via-purple-900 to-rose-900 flex flex-col justify-between p-4">
+                                <div class="flex items-center justify-between text-[11px] font-mono text-white/80">
+                                    <span class="bg-black/40 backdrop-blur-md px-2 py-0.5 rounded-md">4K 24FPS</span>
+                                    <span class="bg-red-600 text-white px-2 py-0.5 rounded-md font-semibold">LATEST UPLOAD</span>
+                                </div>
+
+                                <!-- Center Play Button -->
+                                <div class="my-auto mx-auto w-14 h-14 rounded-full bg-white/25 backdrop-blur-md border border-white/40 flex items-center justify-center text-white group-hover:scale-110 group-hover:bg-red-600 group-hover:border-red-500 transition-all shadow-lg">
+                                    <i class="ph-fill ph-play text-2xl ml-0.5"></i>
+                                </div>
+
+                                <div class="flex items-end justify-between text-white">
+                                    <div>
+                                        <p class="text-xs font-medium text-white/75">Rounak Gupta</p>
+                                        <p class="text-sm font-bold leading-snug">A Day in Asansol: Guitar, Class 11 &amp; Chaos</p>
+                                    </div>
+                                    <span class="text-[11px] font-mono bg-black/50 px-2 py-0.5 rounded">08:42</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Creator Mini Stats -->
+                        <div class="grid grid-cols-3 gap-2 text-center">
+                            <div class="p-2.5 rounded-xl bg-apple-bg dark:bg-white/5">
+                                <p class="text-xs text-apple-subtext">Format</p>
+                                <p class="text-xs sm:text-sm font-bold mt-0.5">Vlogs &amp; Music</p>
+                            </div>
+                            <div class="p-2.5 rounded-xl bg-apple-bg dark:bg-white/5">
+                                <p class="text-xs text-apple-subtext">Editing</p>
+                                <p class="text-xs sm:text-sm font-bold mt-0.5">100% Self-Taught</p>
+                            </div>
+                            <div class="p-2.5 rounded-xl bg-apple-bg dark:bg-white/5">
+                                <p class="text-xs text-apple-subtext">Vibe</p>
+                                <p class="text-xs sm:text-sm font-bold mt-0.5 text-apple-pink">Unfiltered</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CARD 3: FILMMAKING & PHOTOGRAPHY VIEWFINDER (6 Cols) -->
+                <div id="camera-card" class="bento-card md:col-span-6 rounded-3xl bg-white dark:bg-apple-darkcard p-6 sm:p-8 border border-black/[0.05] dark:border-white/[0.08] shadow-bento flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-purple-500/10 text-purple-600 dark:text-purple-400">
+                                <i class="ph-fill ph-camera"></i>
+                                Filmmaking &amp; Photography
+                            </span>
+                            <span id="cameraFocalBadge" class="text-xs font-mono font-semibold text-apple-purple">35mm • f/1.8 • ISO 400</span>
+                        </div>
+
+                        <h3 class="apple-heading text-2xl sm:text-3xl font-bold mb-2">
+                            Chasing light in everyday streets.
+                        </h3>
+                        <p class="text-sm sm:text-base text-apple-subtext dark:text-gray-400 mb-5">
+                            I love framing ordinary evenings in West Bengal like scenes from a movie. Test out the interactive camera viewfinder below with different lenses and color grades.
+                        </p>
+                    </div>
+
+                    <!-- Interactive Camera Viewfinder Frame -->
+                    <div>
+                        <div class="relative rounded-2xl overflow-hidden bg-stone-950 aspect-[16/10] mb-4 border border-black/10 select-none">
+                            <!-- Dynamic Scene Container -->
+                            <div id="viewfinderScene" class="w-full h-full transition-all duration-500 grade-natural flex items-center justify-center relative overflow-hidden" style="transform: scale(1.15);">
+                                <!-- Illustrated Golden Hour Asansol Street / Sunset Skyline SVG -->
+                                <svg viewBox="0 0 800 500" class="w-full h-full object-cover">
+                                    <defs>
+                                        <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
+                                            <stop offset="0%" stop-color="#1e1b4b"/>
+                                            <stop offset="45%" stop-color="#7e22ce"/>
+                                            <stop offset="80%" stop-color="#f97316"/>
+                                            <stop offset="100%" stop-color="#fde047"/>
+                                        </linearGradient>
+                                    </defs>
+                                    <!-- Sky -->
+                                    <rect width="800" height="500" fill="url(#skyGrad)"/>
+                                    <!-- Glowing Sun -->
+                                    <circle cx="560" cy="250" r="65" fill="#fef08a" opacity="0.9"/>
+                                    <!-- Distant Hills/Clouds -->
+                                    <path d="M0 360 Q200 310 420 350 T800 330 L800 500 L0 500 Z" fill="#311042" opacity="0.7"/>
+                                    <!-- Silhouette Buildings & Powerlines -->
+                                    <rect x="60" y="280" width="90" height="220" fill="#0f071e"/>
+                                    <rect x="170" y="310" width="110" height="190" fill="#160b29"/>
+                                    <rect x="310" y="260" width="85" height="240" fill="#0f071e"/>
+                                    <rect x="630" y="290" width="120" height="210" fill="#0f071e"/>
+                                    <!-- Warm Windows -->
+                                    <rect x="80" y="305" width="14" height="18" fill="#fbbf24" opacity="0.8"/>
+                                    <rect x="110" y="340" width="14" height="18" fill="#fbbf24" opacity="0.6"/>
+                                    <rect x="335" y="290" width="16" height="16" fill="#fbbf24" opacity="0.9"/>
+                                    <!-- Teenager Silhouette with Camera / Guitar on Rooftop -->
+                                    <circle cx="490" cy="335" r="14" fill="#090414"/>
+                                    <path d="M472 352 Q490 348 508 352 L515 415 L465 415 Z" fill="#090414"/>
+                                    <rect x="0" y="410" width="800" height="90" fill="#090414"/>
+                                </svg>
+                            </div>
+
+                            <!-- Camera HUD Overlay (Rule of Thirds Grid + Focus Box) -->
+                            <div class="absolute inset-0 pointer-events-none grid grid-cols-3 grid-rows-3">
+                                <div class="border-r border-b border-white/20"></div>
+                                <div class="border-r border-b border-white/20"></div>
+                                <div class="border-b border-white/20"></div>
+                                <div class="border-r border-b border-white/20"></div>
+                                <div class="border-r border-b border-white/20 flex items-center justify-center">
+                                    <!-- Center Focus Target -->
+                                    <div class="w-10 h-10 border border-amber-400/90 rounded-sm flex items-center justify-center">
+                                        <div class="w-1.5 h-1.5 bg-amber-400 rounded-full"></div>
+                                    </div>
+                                </div>
+                                <div class="border-b border-white/20"></div>
+                                <div class="border-r border-white/20"></div>
+                                <div class="border-r border-white/20"></div>
+                                <div></div>
+                            </div>
+
+                            <!-- HUD Metadata Top/Bottom -->
+                            <div class="absolute top-3 left-3 right-3 flex justify-between items-center text-[11px] font-mono text-white/90 pointer-events-none">
+                                <span class="bg-black/50 backdrop-blur-sm px-2 py-0.5 rounded">RAW • CLOG3</span>
+                                <span id="activeGradeLabel" class="bg-black/50 backdrop-blur-sm px-2 py-0.5 rounded text-amber-300">Grade: Kodak Warm</span>
+                            </div>
+                        </div>
+
+                        <!-- Controls: Focal Length & Color Grade -->
+                        <div class="flex flex-wrap items-center justify-between gap-2">
+                            <!-- Focal Lengths -->
+                            <div class="inline-flex p-1 rounded-xl bg-apple-bg dark:bg-white/5">
+                                <button onclick="setFocalLength(24, 1)" id="lens-24" class="lens-btn px-2.5 py-1 rounded-lg text-xs font-mono font-semibold text-apple-subtext">24mm</button>
+                                <button onclick="setFocalLength(35, 1.15)" id="lens-35" class="lens-btn px-2.5 py-1 rounded-lg text-xs font-mono font-semibold bg-white dark:bg-apple-darkcard text-apple-text dark:text-white shadow-sm">35mm</button>
+                                <button onclick="setFocalLength(50, 1.35)" id="lens-50" class="lens-btn px-2.5 py-1 rounded-lg text-xs font-mono font-semibold text-apple-subtext">50mm</button>
+                                <button onclick="setFocalLength(85, 1.6)" id="lens-85" class="lens-btn px-2.5 py-1 rounded-lg text-xs font-mono font-semibold text-apple-subtext">85mm</button>
+                            </div>
+
+                            <!-- Color Filter Pills -->
+                            <div class="inline-flex items-center gap-1.5">
+                                <button onclick="setCameraGrade('natural', 'Natural')" class="px-2.5 py-1 rounded-lg text-xs font-medium bg-apple-bg dark:bg-white/10 hover:bg-black/10 transition-colors">Natural</button>
+                                <button onclick="setCameraGrade('warm', 'Golden Hour')" class="px-2.5 py-1 rounded-lg text-xs font-medium bg-amber-500/15 text-amber-700 dark:text-amber-300 hover:bg-amber-500/25 transition-colors">Warm</button>
+                                <button onclick="setCameraGrade('cyber', 'Neon Night')" class="px-2.5 py-1 rounded-lg text-xs font-medium bg-blue-500/15 text-blue-600 dark:text-blue-300 hover:bg-blue-500/25 transition-colors">Neon</button>
+                                <button onclick="setCameraGrade('bw', 'Noir B&W')" class="px-2.5 py-1 rounded-lg text-xs font-medium bg-stone-500/15 text-stone-700 dark:text-stone-300 hover:bg-stone-500/25 transition-colors">B&amp;W</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CARD 4: CLASS 11 CBSE COMMERCE & BALANCE SHEET (6 Cols) -->
+                <div id="commerce-card" class="bento-card md:col-span-6 rounded-3xl bg-white dark:bg-apple-darkcard p-6 sm:p-8 border border-black/[0.05] dark:border-white/[0.08] shadow-bento flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">
+                                <i class="ph-fill ph-scales"></i>
+                                Class 11 CBSE Commerce
+                            </span>
+                            <span class="text-xs font-mono font-semibold text-emerald-600 dark:text-emerald-400">Dr. = Cr. (Always)</span>
+                        </div>
+
+                        <h3 class="apple-heading text-2xl sm:text-3xl font-bold mb-2">
+                            Accountancy, Business &amp; Economics.
+                        </h3>
+                        <p id="commerceCardDesc" class="text-sm sm:text-base text-apple-subtext dark:text-gray-400 mb-5">
+                            Learning how money, markets, and businesses work by day—and praying my Trial Balance matches on the first try.
+                        </p>
+                    </div>
+
+                    <!-- Interactive "Balance Sheet of My Life" Widget -->
+                    <div class="rounded-2xl bg-[#fbfbfd] dark:bg-black/40 border border-black/[0.06] dark:border-white/10 p-4 sm:p-5">
+                        <div class="flex items-center justify-between mb-3 pb-2 border-b border-black/[0.06] dark:border-white/10">
+                            <span class="text-xs font-bold uppercase tracking-wider text-apple-subtext">Balance Sheet of Rounak (As at Today)</span>
+                            <button onclick="AuditLifeBalance()" class="text-xs font-semibold text-apple-blue hover:underline flex items-center gap-1">
+                                <i class="ph-bold ph-magic-wand"></i> Add Transaction
+                            </button>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-4 text-xs sm:text-sm mb-3">
+                            <!-- Liabilities / Inputs -->
+                            <div>
+                                <p class="font-semibold text-apple-subtext text-[11px] uppercase mb-2">Liabilities &amp; Brainpower</p>
+                                <ul id="liabilitiesList" class="space-y-1.5 font-mono text-xs">
+                                    <li class="flex justify-between"><span>CBSE Syllabus</span><span>40%</span></li>
+                                    <li class="flex justify-between"><span>Late Night Ideas</span><span>35%</span></li>
+                                    <li class="flex justify-between"><span>Chai &amp; Snacks</span><span>25%</span></li>
+                                </ul>
+                            </div>
+                            <!-- Assets / Outputs -->
+                            <div class="border-l border-black/[0.06] dark:border-white/10 pl-4">
+                                <p class="font-semibold text-apple-subtext text-[11px] uppercase mb-2">Assets &amp; Creations</p>
+                                <ul id="assetsList" class="space-y-1.5 font-mono text-xs">
+                                    <li class="flex justify-between"><span>Guitar Chords</span><span>45%</span></li>
+                                    <li class="flex justify-between"><span>YouTube Edits</span><span>35%</span></li>
+                                    <li class="flex justify-between"><span>Actual Accounting</span><span>20%</span></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Total Row -->
+                        <div class="pt-2.5 border-t border-black/[0.06] dark:border-white/10 flex items-center justify-between text-xs font-mono font-bold text-emerald-600 dark:text-emerald-400">
+                            <span id="balanceStatusText">✓ Ledger Verified: 100% Joyfully Balanced</span>
+                            <span>100% = 100%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CARD 5: PART-TIME TEACHER (7 Cols) -->
+                <div class="bento-card md:col-span-7 rounded-3xl bg-white dark:bg-apple-darkcard p-6 sm:p-8 border border-black/[0.05] dark:border-white/[0.08] shadow-bento flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-blue-500/10 text-apple-blue">
+                                <i class="ph-fill ph-chalkboard-teacher"></i>
+                                Part-Time Teacher &amp; Mentor
+                            </span>
+                            <span class="text-xs font-medium text-apple-subtext">Zero Boring Lectures</span>
+                        </div>
+
+                        <h3 class="apple-heading text-2xl sm:text-3xl font-bold mb-2">
+                            Explaining tough topics the simple way.
+                        </h3>
+                        <p class="text-sm sm:text-base text-apple-subtext dark:text-gray-400 mb-6">
+                            Because I’m a student myself, I know exactly why textbook explanations feel confusing. I teach younger students part-time—breaking down concepts into plain, friendly stories that actually stick.
+                        </p>
+                    </div>
+
+                    <!-- Interactive "Rounak's Explain-It-Simply" Translator -->
+                    <div class="rounded-2xl bg-gradient-to-br from-blue-500/[0.06] via-indigo-500/[0.05] to-purple-500/[0.06] dark:from-blue-500/10 dark:to-purple-500/10 p-4 sm:p-5 border border-blue-500/15">
+                        <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                            <span class="text-xs font-bold uppercase tracking-wider text-apple-blue">Try My Teaching Style:</span>
+                            <div class="inline-flex gap-1.5">
+                                <button onclick="showSimpleLesson(0)" id="lesson-btn-0" class="lesson-btn px-2.5 py-1 rounded-lg text-xs font-semibold bg-apple-blue text-white">Inflation</button>
+                                <button onclick="showSimpleLesson(1)" id="lesson-btn-1" class="lesson-btn px-2.5 py-1 rounded-lg text-xs font-semibold bg-white dark:bg-white/10 text-apple-text dark:text-white">Debit vs Credit</button>
+                                <button onclick="showSimpleLesson(2)" id="lesson-btn-2" class="lesson-btn px-2.5 py-1 rounded-lg text-xs font-semibold bg-white dark:bg-white/10 text-apple-text dark:text-white">Music Rhythm</button>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs sm:text-sm">
+                            <div class="p-3 rounded-xl bg-white/70 dark:bg-black/40 border border-black/5">
+                                <p class="text-[10px] font-bold uppercase text-red-500 mb-1">Scary Textbook Definition</p>
+                                <p id="lessonTextbook" class="text-apple-subtext dark:text-gray-300 leading-relaxed">
+                                    "A sustained increase in the general price level of goods and services in an economy over a period of time."
+                                </p>
+                            </div>
+                            <div class="p-3 rounded-xl bg-white dark:bg-black/60 border border-apple-blue/30 shadow-sm">
+                                <p class="text-[10px] font-bold uppercase text-apple-blue mb-1">How I Teach It</p>
+                                <p id="lessonRounak" class="font-medium text-apple-text dark:text-white leading-relaxed">
+                                    "Remember when ₹10 bought you a big packet of chips, and now it's mostly air? That's inflation."
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CARD 6: ASANSOL ROOTS & SELF-AWARE QUOTE CARD (5 Cols) -->
+                <div class="bento-card md:col-span-5 rounded-3xl bg-gradient-to-br from-apple-blue via-apple-purple to-apple-pink p-6 sm:p-8 text-white shadow-bento flex flex-col justify-between relative overflow-hidden">
+                    <div class="relative z-10">
+                        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-white/20 backdrop-blur-md mb-4">
+                            <i class="ph-fill ph-map-pin"></i>
+                            <span>Asansol, West Bengal</span>
+                        </div>
+
+                        <h3 class="apple-heading text-2xl sm:text-3xl font-bold mb-3 leading-tight">
+                            “A joyfully stupid guy who refuses to be boring.”
+                        </h3>
+                        <p class="text-sm sm:text-base text-white/85 leading-relaxed mb-6">
+                            You don’t need to have your whole life figured out at 17. I make mistakes, laugh at myself, learn new chords, teach cool kids, and hit record anyway.
+                        </p>
+                    </div>
+
+                    <!-- Interactive Fun Fact Generator inside Card -->
+                    <div class="relative z-10 rounded-2xl bg-black/25 backdrop-blur-md p-4 border border-white/15">
+                        <div class="flex items-center justify-between mb-1.5">
+                            <span class="text-[11px] font-mono uppercase tracking-wider text-white/75">Random Rounak Fact</span>
+                            <button onclick="nextFunFact()" class="text-xs font-semibold bg-white text-apple-text px-2.5 py-1 rounded-full hover:scale-105 active:scale-95 transition-transform flex items-center gap-1">
+                                <span>Next</span>
+                                <i class="ph-bold ph-shuffle"></i>
+                            </button>
+                        </div>
+                        <p id="funFactText" class="text-xs sm:text-sm font-medium text-white">
+                            I have practiced guitar speeches in the mirror pretending I'm at an Apple Keynote.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- APPLE-STYLE COMPARISON / PERSONALITY STRIP -->
+        <section class="max-w-6xl mx-auto px-4 sm:px-6 mt-20">
+            <div class="rounded-3xl bg-white dark:bg-apple-darkcard border border-black/[0.05] dark:border-white/[0.08] p-8 sm:p-12 shadow-bento text-center">
+                <span class="text-xs font-bold uppercase tracking-widest text-apple-purple">Why Rounak?</span>
+                <h2 class="apple-heading text-3xl sm:text-5xl font-extrabold mt-2 mb-4">
+                    Built for creativity. Powered by curiosity.
+                </h2>
+                <p class="max-w-xl mx-auto text-sm sm:text-base text-apple-subtext dark:text-gray-400 mb-10">
+                    Whether you want to jam on acoustic guitar, collaborate on a YouTube video, talk photography, or learn Class 11 topics without falling asleep—let’s connect.
+                </p>
+
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-10">
+                    <div class="p-4 rounded-2xl bg-apple-bg dark:bg-white/5">
+                        <p class="text-2xl sm:text-3xl font-extrabold apple-gradient-text">17</p>
+                        <p class="text-xs font-medium text-apple-subtext mt-1">Years Young</p>
+                    </div>
+                    <div class="p-4 rounded-2xl bg-apple-bg dark:bg-white/5">
+                        <p class="text-2xl sm:text-3xl font-extrabold text-apple-blue">5+</p>
+                        <p class="text-xs font-medium text-apple-subtext mt-1">Creative Hats Worn</p>
+                    </div>
+                    <div class="p-4 rounded-2xl bg-apple-bg dark:bg-white/5">
+                        <p class="text-2xl sm:text-3xl font-extrabold text-apple-green">100%</p>
+                        <p class="text-xs font-medium text-apple-subtext mt-1">Balanced Books</p>
+                    </div>
+                    <div class="p-4 rounded-2xl bg-apple-bg dark:bg-white/5">
+                        <p class="text-2xl sm:text-3xl font-extrabold text-apple-orange">∞</p>
+                        <p class="text-xs font-medium text-apple-subtext mt-1">Guitar Retakes</p>
+                    </div>
+                </div>
+
+                <div class="flex flex-wrap justify-center gap-3">
+                    <button onclick="openContactModal()" class="px-7 py-3.5 rounded-full bg-apple-text dark:bg-white text-white dark:text-apple-text font-semibold text-sm sm:text-base hover:opacity-90 transition-all flex items-center gap-2">
+                        <i class="ph-bold ph-paper-plane-tilt"></i>
+                        <span>Say Hi to Rounak</span>
+                    </button>
+                    <button onclick="copyWebsiteLink()" class="px-6 py-3.5 rounded-full bg-apple-bg dark:bg-white/10 font-semibold text-sm sm:text-base hover:bg-black/10 dark:hover:bg-white/20 transition-all flex items-center gap-2">
+                        <i class="ph-bold ph-link"></i>
+                        <span id="copyBtnText">Copy rounakgupta.com</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- MINIMAL APPLE-STYLE FOOTER -->
+    <footer class="border-t border-black/[0.06] dark:border-white/[0.08] py-10 px-4 sm:px-6 text-xs text-apple-subtext">
+        <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-2">
+                <span class="font-bold text-apple-text dark:text-white">rounakgupta.com</span>
+                <span>— Designed with love in Asansol, West Bengal, India.</span>
+            </div>
+            <div class="flex items-center gap-5">
+                <a href="#music-card" class="hover:underline">Music</a>
+                <a href="#camera-card" class="hover:underline">Films</a>
+                <a href="#youtube-card" class="hover:underline">YouTube</a>
+                <a href="#commerce-card" class="hover:underline">Commerce</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- MODAL 1: APPLE EVENT TECH SPECS SHEET -->
+    <div id="specsModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/50 backdrop-blur-md">
+        <div class="bg-white dark:bg-[#1c1c1e] border border-black/10 dark:border-white/15 rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl relative animate-fadeIn">
+            <button onclick="toggleSpecsModal()" class="absolute top-5 right-5 w-8 h-8 rounded-full bg-black/5 dark:bg-white/10 flex items-center justify-center hover:bg-black/10">
+                <i class="ph-bold ph-x"></i>
+            </button>
+
+            <span class="text-xs font-bold uppercase tracking-widest text-apple-purple">Hardware &amp; Human Specs</span>
+            <h3 class="apple-heading text-2xl font-bold mt-1 mb-5">Rounak Gupta (17-inch Model)</h3>
+
+            <div class="space-y-3 text-xs sm:text-sm border-t border-black/10 dark:border-white/10 pt-4">
+                <div class="flex justify-between py-1.5 border-b border-black/5 dark:border-white/5">
+                    <span class="text-apple-subtext">Processor</span>
+                    <span class="font-semibold text-right">R17 Neural Engine (Powered by Chai &amp; Music)</span>
+                </div>
+                <div class="flex justify-between py-1.5 border-b border-black/5 dark:border-white/5">
+                    <span class="text-apple-subtext">Hometown</span>
+                    <span class="font-semibold text-right">Asansol, West Bengal, India</span>
+                </div>
+                <div class="flex justify-between py-1.5 border-b border-black/5 dark:border-white/5">
+                    <span class="text-apple-subtext">Academic OS</span>
+                    <span class="font-semibold text-right">CBSE Grade 11 Commerce</span>
+                </div>
+                <div class="flex justify-between py-1.5 border-b border-black/5 dark:border-white/5">
+                    <span class="text-apple-subtext">Audio Output</span>
+                    <span class="font-semibold text-right">Acoustic Guitar, Strumming &amp; Vocal Chords</span>
+                </div>
+                <div class="flex justify-between py-1.5 border-b border-black/5 dark:border-white/5">
+                    <span class="text-apple-subtext">Camera System</span>
+                    <span class="font-semibold text-right">Filmmaker Eye + Street Photography</span>
+                </div>
+                <div class="flex justify-between py-1.5">
+                    <span class="text-apple-subtext">Self-Diagnostic</span>
+                    <span class="font-semibold text-apple-pink text-right">Joyfully Stupid, Curiously Smart</span>
+                </div>
+            </div>
+
+            <button onclick="toggleSpecsModal()" class="mt-6 w-full py-2.5 rounded-full bg-apple-blue text-white font-semibold text-sm">
+                Awesome, Got It
+            </button>
+        </div>
+    </div>
+
+    <!-- MODAL 2: YOUTUBE PREVIEW MODAL -->
+    <div id="videoModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/60 backdrop-blur-md">
+        <div class="bg-white dark:bg-[#1c1c1e] border border-black/10 dark:border-white/15 rounded-3xl max-w-xl w-full p-6 shadow-2xl relative">
+            <div class="flex items-center justify-between mb-4">
+                <div class="flex items-center gap-2">
+                    <i class="ph-fill ph-youtube-logo text-red-600 text-xl"></i>
+                    <span class="font-bold text-sm">Rounak's YouTube Studio Preview</span>
+                </div>
+                <button onclick="closeVideoModal()" class="w-8 h-8 rounded-full bg-black/5 dark:bg-white/10 flex items-center justify-center">
+                    <i class="ph-bold ph-x"></i>
+                </button>
+            </div>
+
+            <div class="rounded-2xl bg-gradient-to-br from-stone-900 via-indigo-950 to-purple-950 aspect-video flex flex-col items-center justify-center text-center p-6 text-white mb-4">
+                <i class="ph-fill ph-film-slate text-4xl text-apple-orange mb-3"></i>
+                <h4 class="text-lg font-bold mb-1">“A Day in My Life: Guitar, Commerce &amp; Filmmaking”</h4>
+                <p class="text-xs text-white/75 max-w-sm mb-4">
+                    Shot &amp; edited in Asansol. Featuring acoustic guitar riffs, last-minute accountancy homework, and golden hour B-roll.
+                </p>
+                <button onclick="strumChord('G'); closeVideoModal();" class="px-4 py-2 rounded-full bg-white text-black text-xs font-bold hover:scale-105 transition-transform">
+                    Play Soundtrack Riff &amp; Return
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 3: SAY HI / CONTACT MODAL -->
+    <div id="contactModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/50 backdrop-blur-md">
+        <div class="bg-white dark:bg-[#1c1c1e] border border-black/10 dark:border-white/15 rounded-3xl max-w-md w-full p-6 sm:p-8 shadow-2xl relative">
+            <button onclick="closeContactModal()" class="absolute top-5 right-5 w-8 h-8 rounded-full bg-black/5 dark:bg-white/10 flex items-center justify-center">
+                <i class="ph-bold ph-x"></i>
+            </button>
+
+            <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-apple-blue to-apple-pink flex items-center justify-center text-white font-bold text-xl mb-4">
+                👋
+            </div>
+            <h3 class="apple-heading text-2xl font-bold mb-1">Say Hi to Rounak!</h3>
+            <p class="text-xs sm:text-sm text-apple-subtext mb-5">
+                Drop a quick note about music, YouTube collabs, filmmaking, or tuition classes in Asansol.
+            </p>
+
+            <form onsubmit="handleContactSubmit(event)" class="space-y-3">
+                <div>
+                    <input type="text" required placeholder="Your Name" class="w-full px-4 py-2.5 rounded-xl bg-apple-bg dark:bg-white/5 border border-black/10 dark:border-white/10 text-sm focus:outline-none focus:border-apple-blue">
+                </div>
+                <div>
+                    <select class="w-full px-4 py-2.5 rounded-xl bg-apple-bg dark:bg-white/5 border border-black/10 dark:border-white/10 text-sm focus:outline-none focus:border-apple-blue">
+                        <option>Let's jam / talk music 🎸</option>
+                        <option>YouTube or Filmmaking collab 🎬</option>
+                        <option>Part-time Tuition / Study help 📚</option>
+                        <option>Just saying hello from the internet 👋</option>
+                    </select>
+                </div>
+                <div>
+                    <textarea rows="3" required placeholder="Write your message..." class="w-full px-4 py-2.5 rounded-xl bg-apple-bg dark:bg-white/5 border border-black/10 dark:border-white/10 text-sm focus:outline-none focus:border-apple-blue"></textarea>
+                </div>
+                <button type="submit" class="w-full py-3 rounded-full bg-gradient-to-r from-apple-blue to-apple-purple text-white font-semibold text-sm shadow-apple-pill hover:opacity-95 transition-all">
+                    Send Message
+                </button>
+            </form>
+            <p id="contactSuccessMsg" class="hidden mt-3 text-xs font-semibold text-emerald-600 dark:text-emerald-400 text-center">
+                ✨ Message sent! Rounak will get back to you right after finishing this guitar chord.
+            </p>
+        </div>
+    </div>
+
+    <!-- INTERACTIVE JAVASCRIPT LOGIC -->
+    <script>
+        /* ==========================================
+           1. HONEST 17YO MODE VS APPLE POLISH MODE
+           ========================================== */
+        let isHonestMode = false;
+        function toggleHonestMode() {
+            isHonestMode = !isHonestMode;
+            const label = document.getElementById('honestModeLabel');
+            const badgeText = document.getElementById('badgeText');
+            const heroMain = document.getElementById('heroTitleMain');
+            const heroGrad = document.getElementById('heroTitleGradient');
+            const heroSub = document.getElementById('heroSubtitle');
+            const musicDesc = document.getElementById('musicCardDesc');
+            const commerceDesc = document.getElementById('commerceCardDesc');
+
+            if (isHonestMode) {
+                if (label) label.textContent = "Mode: 100% Honest Stupid Guy";
+                badgeText.textContent = "Just a regular 17yo guy from Asansol figuring things out";
+                heroMain.textContent = "Rounak.";
+                heroGrad.textContent = "Slightly Clueless.";
+                heroSub.innerHTML = "I'm a 17-year-old teenager from <span class='text-apple-text dark:text-white font-medium'>Asansol, West Bengal</span>. I play guitar to look cool, make YouTube videos in my room, study Class 11 Commerce, and teach kids part-time.";
+                musicDesc.textContent = "Honestly, I start practicing a song and end up noodling the same 4 chords for two hours. Click below to strum!";
+                commerceDesc.textContent = "When my Balance Sheet doesn't tally, I question all my life choices—then I drink chai and fix it.";
+            } else {
+                if (label) label.textContent = "Mode: Apple Polish";
+                badgeText.textContent = "Certified Overthinker & Joyfully Stupid Genius";
+                heroMain.textContent = "Rounak.";
+                heroGrad.textContent = "Pro. Max.";
+                heroSub.innerHTML = "A 17-year-old musician, filmmaker, YouTuber, Class 11 Commerce student, and part-time teacher from <span class='text-apple-text dark:text-white font-medium'>Asansol, West Bengal</span>. Trying a bit of everything—and having a blast doing it.";
+                musicDesc.textContent = "Whenever I’m not studying or editing videos, I have a guitar in my hands. Pick a chord below or pluck the strings directly to jam with my virtual acoustic guitar.";
+                commerceDesc.textContent = "Learning how money, markets, and businesses work by day—and praying my Trial Balance matches on the first try.";
+            }
+        }
+
+        /* ==========================================
+           2. WEB AUDIO API ACOUSTIC GUITAR SYNTHESIZER
+           ========================================== */
+        let audioCtx = null;
+
+        // Open string frequencies (E2, A2, D3, G3, B3, E4)
+        const baseStringFreqs = [82.41, 110.00, 146.83, 196.00, 246.94, 329.63];
+
+        // Chord frequency sets for warm acoustic strumming
+        const chordVoicings = {
+            'G':  [98.00, 123.47, 146.83, 196.00, 293.66, 392.00], // G Major
+            'C':  [130.81, 164.81, 196.00, 293.66, 329.63, 392.00], // Cadd9
+            'Em': [82.41, 123.47, 164.81, 196.00, 246.94, 329.63], // E Minor
+            'D':  [146.83, 220.00, 293.66, 369.99, 440.00, 587.33]  // D Major
+        };
+
+        let activeChord = 'G';
+
+        function initAudio() {
+            if (!audioCtx) {
+                const AudioContext = window.AudioContext || window.webkitAudioContext;
+                audioCtx = new AudioContext();
+            }
+            if (audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+        }
+
+        function playGuitarNote(freq, delay = 0, stringIndex = 0) {
+            try {
+                initAudio();
+                const startTime = audioCtx.currentTime + delay;
+
+                // Dual oscillators for warm acoustic body + pluck harmonics
+                const osc1 = audioCtx.createOscillator();
+                const osc2 = audioCtx.createOscillator();
+                const filter = audioCtx.createBiquadFilter();
+                const gainNode = audioCtx.createGain();
+
+                osc1.type = 'triangle';
+                osc2.type = 'sawtooth';
+
+                osc1.frequency.setValueAtTime(freq, startTime);
+                osc2.frequency.setValueAtTime(freq * 2, startTime); // Octave harmonic
+
+                // Warm lowpass filter envelope
+                filter.type = 'lowpass';
+                filter.frequency.setValueAtTime(2200, startTime);
+                filter.frequency.exponentialRampToValueAtTime(380, startTime + 1.4);
+
+                // Pluck amplitude envelope
+                gainNode.gain.setValueAtTime(0.001, startTime);
+                gainNode.gain.linearRampToValueAtTime(0.18, startTime + 0.015);
+                gainNode.gain.exponentialRampToValueAtTime(0.0008, startTime + 1.8);
+
+                osc1.connect(filter);
+                osc2.connect(filter);
+                filter.connect(gainNode);
+                gainNode.connect(audioCtx.destination);
+
+                osc1.start(startTime);
+                osc2.start(startTime);
+                osc1.stop(startTime + 1.85);
+                osc2.stop(startTime + 1.85);
+
+                // Trigger visual string vibration
+                setTimeout(() => {
+                    const strEl = document.getElementById(`string-${stringIndex}`);
+                    if (strEl) {
+                        strEl.classList.remove('string-pluck');
+                        void strEl.offsetWidth; // Reflow
+                        strEl.classList.add('string-pluck');
+                    }
+                }, delay * 1000);
+            } catch (e) {
+                console.error("Audio playback error:", e);
+            }
+        }
+
+        function pluckSingleString(index) {
+            const freqs = chordVoicings[activeChord] || baseStringFreqs;
+            playGuitarNote(freqs[index], 0, index);
+            const status = document.getElementById('nowPlayingNote');
+            if (status) status.textContent = `Plucked String ${6 - index} (${activeChord})`;
+        }
+
+        function strumChord(chordName) {
+            activeChord = chordName;
+            const freqs = chordVoicings[chordName];
+            if (!freqs) return;
+
+            // Update button active UI
+            document.querySelectorAll('.chord-btn').forEach(btn => {
+                btn.className = "chord-btn px-3 py-1.5 rounded-xl text-xs font-bold bg-black/5 dark:bg-white/10 hover:bg-black/10 transition-all";
+            });
+            const activeBtn = document.getElementById(`chord-${chordName}`);
+            if (activeBtn) {
+                activeBtn.className = "chord-btn px-3 py-1.5 rounded-xl text-xs font-bold bg-apple-orange text-white shadow-sm transition-all";
+            }
+
+            // Strum across all 6 strings with realistic 45ms stagger
+            freqs.forEach((f, idx) => {
+                playGuitarNote(f, idx * 0.045, idx);
+            });
+
+            const status = document.getElementById('nowPlayingNote');
+            if (status) status.textContent = `♪ Strumming ${chordName} Chord`;
+        }
+
+        /* ==========================================
+           3. FILMMAKING CAMERA VIEWFINDER CONTROLS
+           ========================================== */
+        function setFocalLength(mm, scaleFactor) {
+            const scene = document.getElementById('viewfinderScene');
+            const badge = document.getElementById('cameraFocalBadge');
+            if (scene) {
+                scene.style.transform = `scale(${scaleFactor})`;
+            }
+            const apertures = { 24: 'f/2.8', 35: 'f/1.8', 50: 'f/1.4', 85: 'f/1.2' };
+            if (badge) {
+                badge.textContent = `${mm}mm • ${apertures[mm]} • ISO 400`;
+            }
+
+            document.querySelectorAll('.lens-btn').forEach(btn => {
+                btn.className = "lens-btn px-2.5 py-1 rounded-lg text-xs font-mono font-semibold text-apple-subtext";
+            });
+            const activeLens = document.getElementById(`lens-${mm}`);
+            if (activeLens) {
+                activeLens.className = "lens-btn px-2.5 py-1 rounded-lg text-xs font-mono font-semibold bg-white dark:bg-apple-darkcard text-apple-text dark:text-white shadow-sm";
+            }
+        }
+
+        function setCameraGrade(gradeKey, labelName) {
+            const scene = document.getElementById('viewfinderScene');
+            const label = document.getElementById('activeGradeLabel');
+            if (scene) {
+                scene.classList.remove('grade-natural', 'grade-warm', 'grade-cyber', 'grade-bw');
+                scene.classList.add(`grade-${gradeKey}`);
+            }
+            if (label) {
+                label.textContent = `Grade: ${labelName}`;
+            }
+        }
+
+        /* ==========================================
+           4. COMMERCE BALANCE SHEET WIDGET
+           ========================================== */
+        const playfulTransactions = [
+            {
+                liab: [["CBSE Syllabus", "30%"], ["Guitar Practice", "45%"], ["Evening Momos", "25%"]],
+                assets: [["New Song Learned", "50%"], ["YouTube Vlogs", "30%"], ["Balanced Ledger", "20%"]],
+                note: "✓ Audited: Extra guitar practice successfully capitalized!"
+            },
+            {
+                liab: [["Accountancy HW", "50%"], ["Teaching Prep", "30%"], ["Overthinking", "20%"]],
+                assets: [["Happy Students", "45%"], ["Exam Confidence", "35%"], ["Good Vibes", "20%"]],
+                note: "✓ Audited: Zero suspense account needed!"
+            },
+            {
+                liab: [["Camera Gear Dreams", "40%"], ["Asansol Sunset Walks", "35%"], ["Chai Breaks", "25%"]],
+                assets: [["Cinematic B-Roll", "45%"], ["Thumbnails Made", "30%"], ["Commerce Notes", "25%"]],
+                note: "✓ Audited: Goodwill valued at 100%!"
+            }
+        ];
+        let txIndex = 0;
+
+        function AuditLifeBalance() {
+            const tx = playfulTransactions[txIndex % playfulTransactions.length];
+            txIndex++;
+
+            const liabEl = document.getElementById('liabilitiesList');
+            const assetEl = document.getElementById('assetsList');
+            const statusEl = document.getElementById('balanceStatusText');
+
+            if (liabEl && assetEl) {
+                liabEl.innerHTML = tx.liab.map(item => `<li class="flex justify-between"><span>${item[0]}</span><span>${item[1]}</span></li>`).join('');
+                assetEl.innerHTML = tx.assets.map(item => `<li class="flex justify-between"><span>${item[0]}</span><span>${item[1]}</span></li>`).join('');
+            }
+            if (statusEl) {
+                statusEl.textContent = tx.note;
+            }
+        }
+
+        /* ==========================================
+           5. PART-TIME TEACHER LESSON TRANSLATOR
+           ========================================== */
+        const simpleLessons = [
+            {
+                textbook: '"A sustained increase in the general price level of goods and services in an economy over a period of time."',
+                rounak: '"Remember when ₹10 bought you a big packet of chips, and now it\'s mostly air? That\'s inflation."'
+            },
+            {
+                textbook: '"Debit signifies an increase in assets or expenses, whereas credit signifies an increase in liabilities or equity."',
+                rounak: '"Debit is what comes into your pocket or gets spent; Credit is where the money came from. Simple!"'
+            },
+            {
+                textbook: '"Syncopation involves a disturbance or interruption of the regular flow of rhythm with off-beat accents."',
+                rounak: '"It\'s when the guitar strum surprises your ears just before the beat drops—making your head nod automatically."'
+            }
+        ];
+
+        function showSimpleLesson(idx) {
+            const tb = document.getElementById('lessonTextbook');
+            const rk = document.getElementById('lessonRounak');
+            if (tb && rk && simpleLessons[idx]) {
+                tb.textContent = simpleLessons[idx].textbook;
+                rk.textContent = simpleLessons[idx].rounak;
+            }
+            document.querySelectorAll('.lesson-btn').forEach((btn, i) => {
+                if (i === idx) {
+                    btn.className = "lesson-btn px-2.5 py-1 rounded-lg text-xs font-semibold bg-apple-blue text-white";
+                } else {
+                    btn.className = "lesson-btn px-2.5 py-1 rounded-lg text-xs font-semibold bg-white dark:bg-white/10 text-apple-text dark:text-white";
+                }
+            });
+        }
+
+        /* ==========================================
+           6. RANDOM FUN FACTS GENERATOR
+           ========================================== */
+        const rounakFacts = [
+            "I have practiced guitar speeches in the mirror pretending I'm at an Apple Keynote.",
+            "I can explain a Balance Sheet faster than I can find my lost guitar pick.",
+            "Every time I see a nice sunset in Asansol, I mentally color-grade it.",
+            "My students think I'm a chill teacher; my friends know I'm a lovable idiot.",
+            "90% of my phone storage is random B-roll clips and voice-memo song ideas."
+        ];
+        let factIdx = 0;
+
+        function nextFunFact() {
+            factIdx = (factIdx + 1) % rounakFacts.length;
+            const el = document.getElementById('funFactText');
+            if (el) el.textContent = rounakFacts[factIdx];
+        }
+
+        /* ==========================================
+           7. THEME, MODALS & CLIPBOARD UTILITIES
+           ========================================== */
+        function toggleTheme() {
+            const html = document.documentElement;
+            const icon = document.getElementById('themeIcon');
+            html.classList.toggle('dark');
+            if (html.classList.contains('dark')) {
+                icon.className = 'ph-fill ph-sun text-sm text-amber-400';
+            } else {
+                icon.className = 'ph-fill ph-moon text-sm';
+            }
+        }
+
+        function toggleSpecsModal() {
+            const m = document.getElementById('specsModal');
+            m.classList.toggle('hidden');
+            m.classList.toggle('flex');
+        }
+
+        function openVideoModal() {
+            const m = document.getElementById('videoModal');
+            m.classList.remove('hidden');
+            m.classList.add('flex');
+        }
+
+        function closeVideoModal() {
+            const m = document.getElementById('videoModal');
+            m.classList.add('hidden');
+            m.classList.remove('flex');
+        }
+
+        function openContactModal() {
+            const m = document.getElementById('contactModal');
+            m.classList.remove('hidden');
+            m.classList.add('flex');
+        }
+
+        function closeContactModal() {
+            const m = document.getElementById('contactModal');
+            m.classList.add('hidden');
+            m.classList.remove('flex');
+            document.getElementById('contactSuccessMsg').classList.add('hidden');
+        }
+
+        function handleContactSubmit(e) {
+            e.preventDefault();
+            document.getElementById('contactSuccessMsg').classList.remove('hidden');
+            setTimeout(() => {
+                closeContactModal();
+                e.target.reset();
+            }, 2200);
+        }
+
+        function copyWebsiteLink() {
+            const tempInput = document.createElement('textarea');
+            tempInput.value = 'https://rounakgupta.com';
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+
+            const copyText = document.getElementById('copyBtnText');
+            if (copyText) {
+                copyText.textContent = "Copied rounakgupta.com ✓";
+                setTimeout(() => {
+                    copyText.textContent = "Copy rounakgupta.com";
+                }, 2000);
+            }
+        }
+    </script>
 </body>
 </html>
